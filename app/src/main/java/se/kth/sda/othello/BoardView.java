@@ -108,6 +108,7 @@ public class BoardView extends View {
 
         boolean result = mDetector.onTouchEvent(event);
         if (!result) {
+
             if (event.getAction() == MotionEvent.ACTION_UP) {
                 eventListener.onClick((int)(event.getX()/this.getWidth()*8), (int)(event.getY()/this.getHeight()*8));
 

@@ -1,5 +1,7 @@
 package se.kth.sda.othello.imp;
 
+import android.widget.Toast;
+
 import java.util.List;
 import java.util.Vector;
 
@@ -16,11 +18,13 @@ public class OthelloImp implements Othello {
     private final Player playerTwo;
     private final BoardImp board;
     private Player currentPlayer;
+    List<Node> nodeRes ;
 
     public OthelloImp(Player one, Player two) {
         this.playerOne = one;
         this.playerTwo = two;
         this.board = new BoardImp();
+        nodeRes = new Vector<Node>();
     }
 
     @Override
@@ -58,6 +62,13 @@ public class OthelloImp implements Othello {
 
     @Override
     public boolean isMoveValid(String playerId, String nodeId) {
+
+        for(Node node:nodeRes){
+            if(node.getId().equals(nodeId)){
+                return false;
+            }
+        }
+
         return true;
     }
 
@@ -87,14 +98,13 @@ public class OthelloImp implements Othello {
         if (playerId != currentPlayer.getId())
             throw new IllegalStateException("Invalid player ID");
 
-        List<Node> res = new Vector<Node>();
         Node newNode = new NodeImp(nodeId, playerId);
         board.setNode(newNode);
-        res.add(newNode);
+        nodeRes.add(newNode);
 
         swapPlayer();
 
-        return res;
+        return nodeRes;
     }
 
     @Override

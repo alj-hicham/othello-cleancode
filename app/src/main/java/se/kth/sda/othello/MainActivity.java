@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.ArrayMap;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.Map;
@@ -12,14 +13,18 @@ import java.util.Map;
 import se.kth.sda.othello.imp.NodeImp;
 import se.kth.sda.othello.imp.OthelloFactoryImp;
 import se.kth.sda.othello.R;
+import se.kth.sda.othello.player.Player;
 
 public class MainActivity extends Activity {
     public static final String GAME_TYPE = "GAME_TYPE";
     public static final String GAME_HUMAN = "HUMAN";
     public static final String GAME_RESULT = "GAME_RESULT";
+    public static final String GAME_PLAYERONE = "P1";
+    public static final String GAME_PLAYERTWO = "P2";
 
     OthelloFactory gameFactory = new OthelloFactoryImp();
     Othello game;
+    private ImageView turnImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +32,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         final BoardView boardView = (BoardView) findViewById(R.id.boardView);
-
+        turnImage = (ImageView) findViewById(R.id.ture_image);
         if (this.getIntent().getExtras().getString(GAME_TYPE).equals(GAME_HUMAN)) {
             game = gameFactory.createHumanGame();
         }
@@ -38,13 +43,30 @@ public class MainActivity extends Activity {
         boardView.setEventListener(new BoardView.BoardViewListener() {
             @Override
             public void onClick(int x, int y) {
-                String nodeId = NodeImp.format(x,y);
-                game.move(game.getPlayerInTurn().getId(), nodeId);
+                String nodeId = NodeImp.format(x, y);
+                Player currentPlay = game.getPlayerInTurn();
+                try {
+                    game.move(currentPlay.getId(), nodeId);
+                } catch (IllegalStateException e) {
+                    if (e.getMessage().equals("Invalid move")) {
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                }
+
+                swapPlayerTurnImage(currentPlay);
                 boardView.invalidate();
             }
         });
     }
 
+    private void swapPlayerTurnImage(Player currentPlay){
+        if (GAME_PLAYERONE.equals(currentPlay.getId())) {
+            turnImage.setImageResource(R.mipmap.ic_arrow_right);
+        } else if (GAME_PLAYERTWO.equals(currentPlay.getId())) {
+            turnImage.setImageResource(R.mipmap.ic_arrow_left);
+        }
+    }
     public void quitGame(View view) {
         Intent intent = new Intent(this, MenuActivity.class);
         intent.putExtra(GAME_RESULT, "P1");
