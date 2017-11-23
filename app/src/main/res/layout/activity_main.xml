@@ -39,7 +39,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/score_playone"
+                    android:id="@+id/totle_playone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="3"
@@ -94,7 +94,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/score_playtwo"
+                    android:id="@+id/totle_playtwo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="3dp"

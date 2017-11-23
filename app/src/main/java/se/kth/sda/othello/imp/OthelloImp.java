@@ -118,4 +118,21 @@ public class OthelloImp implements Othello {
         // TODO: choose the player with the right ID
         currentPlayer = playerOne;
     }
+
+    /**
+     * Get the score of the current player by Xin
+     * @param playerId current player
+     * @return the score of the current player
+     */
+    public int getPlayerScore(String playerId){
+        int score =0;
+
+        for(Node node: nodeRes){
+            if(playerId.equals(node.getOccupantPlayerId())){
+
+                score++;
+            }
+        }
+        return score;
+    }
 }

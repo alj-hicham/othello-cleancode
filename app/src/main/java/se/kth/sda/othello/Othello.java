@@ -97,4 +97,12 @@ public interface Othello {
 	 * @param playerId the id of the player that will start the game.
 	 */
 	public void start(String playerId);
+
+	/**
+	 * Get the score of the current player by Xin
+	 * @param playerId current player
+	 * @return the score of the current player
+	 */
+	public int getPlayerScore(String playerId);
+
 }

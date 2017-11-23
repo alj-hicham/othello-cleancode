@@ -2,6 +2,6 @@
     <string name="app_name">AndroidOthello</string>
     <string name="main_playone">Play One</string>
     <string name="main_playtwo">Play Two</string>
-    <string name="main_totle">Totle : </string>
+    <string name="main_totle">Total : </string>
     <string name="main_yourturn">Your Turn</string>
 </resources>

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.ArrayMap;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Map;
@@ -24,15 +25,22 @@ public class MainActivity extends Activity {
 
     OthelloFactory gameFactory = new OthelloFactoryImp();
     Othello game;
+    //start: modify by Xin 11.23
     private ImageView turnImage;
-
+    private TextView totlePlayone;
+    private TextView totlePlaytow;
+    //end
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         final BoardView boardView = (BoardView) findViewById(R.id.boardView);
+        //start: modify by Xin 11.23
         turnImage = (ImageView) findViewById(R.id.ture_image);
+        totlePlayone=(TextView) findViewById(R.id.totle_playone);
+        totlePlaytow=(TextView) findViewById(R.id.totle_playtwo);
+        //end
         if (this.getIntent().getExtras().getString(GAME_TYPE).equals(GAME_HUMAN)) {
             game = gameFactory.createHumanGame();
         }
@@ -54,7 +62,14 @@ public class MainActivity extends Activity {
                     }
                 }
 
+                //start: modify by Xin 11.23
+
                 swapPlayerTurnImage(currentPlay);
+
+                totlePlayone.setText(String.valueOf(game.getPlayerScore(GAME_PLAYERONE)));
+                totlePlaytow.setText(String.valueOf(game.getPlayerScore(GAME_PLAYERTWO)));
+
+                //end
                 boardView.invalidate();
             }
         });
