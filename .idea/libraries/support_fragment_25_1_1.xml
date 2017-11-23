@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="support-fragment-25.1.1">
+    <CLASSES>
+      <root url="file:///NOBACKUP/tmp-sda-1105/.android/build-cache/492270da8d1219af600bb1bed81b11a2bd4a2d37/output/res" />
+      <root url="jar:///NOBACKUP/tmp-sda-1105/.android/build-cache/492270da8d1219af600bb1bed81b11a2bd4a2d37/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Android/Sdk/extras/android/m2repository/com/android/support/support-fragment/25.1.1/support-fragment-25.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
