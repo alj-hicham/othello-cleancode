@@ -48,6 +48,7 @@ public class MainActivity extends Activity {
         game.start();
 
         boardView.setModel(game.getBoard());
+        game.moveInitialNodes();                 // add initial coins on the board
         boardView.setEventListener(new BoardView.BoardViewListener() {
             @Override
             public void onClick(int x, int y) {

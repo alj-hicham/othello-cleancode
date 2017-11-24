@@ -108,6 +108,21 @@ public class OthelloImp implements Othello {
     }
 
     @Override
+    /**
+     * Make initial 2 moves for each player.
+     * Initial nodes are defined in the BoardImp class.
+     * @return the list of nodes where the moves are made
+     * @author petrych
+     */
+    public List<Node> moveInitialNodes() {
+        List<Node> initialNodes = board.getInitialNodes();
+        for (Node node : initialNodes) {
+            move(currentPlayer.getId(), node.getId());
+        }
+        return initialNodes;
+    }
+
+    @Override
     public void start() {
         // TODO: choose a random player
         currentPlayer = playerOne;
