@@ -3,6 +3,7 @@ package se.kth.sda.othello.imp;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.Random;
 import java.util.Vector;
 
 import se.kth.sda.othello.Othello;
@@ -122,16 +123,31 @@ public class OthelloImp implements Othello {
         return initialNodes;
     }
 
+    /**
+     * Starts the game with a random player.
+     * @author petrych
+     */
     @Override
     public void start() {
-        // TODO: choose a random player
-        currentPlayer = playerOne;
+        Random r = new Random();
+        int randomNum = r.nextInt(1);
+        if (randomNum == 0) {
+            currentPlayer = playerOne;
+        }
+        else currentPlayer = playerTwo;
     }
 
+    /**
+     * Starts the game with the given player.
+     * @param playerId the id of the player that will start the game.
+     * @author petrych
+     */
     @Override
     public void start(String playerId) {
-        // TODO: choose the player with the right ID
-        currentPlayer = playerOne;
+        if (playerOne.getId() == playerId) {
+            currentPlayer = playerOne;
+        }
+        else currentPlayer = playerTwo;
     }
 
     /**
