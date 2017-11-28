@@ -20,14 +20,31 @@ public interface Othello {
 	 */
 	public Board getBoard();
 
+	//start: new method by Aleksandar 11.27
+	/**
+	 * Sets a node to different properties in the Board  .
+	 *
+	 * @param node the node to set
+	 */
+	public void setNode(Node node);
+
+	//start: modified method by Aleksandar 11.26
 	/**
 	 * Returns the nodes that will be swapped for a move at the given nodeId.
-	 * 
+	 *
 	 * @param playerId the id of the player making the move
 	 * @param nodeId the id of the node where the move is made
 	 * @return the list of nodes that will be swapped for the given move
 	 */
 	public List<Node> getNodesToSwap(String playerId, String nodeId);
+
+	//start: new method by Aleksandar 11.25
+	/**
+	 * Returns the nodes as next possible moves  .
+	 *
+	 * @return the list of nodes as possible moves for the next move
+	 */
+	public List<Node> getPossibleMoves();
 
 	/**
 	 * Get the player in turn or null if no player can move

@@ -46,6 +46,12 @@ public class BoardImp implements Board {
         nodes[x][y] = node;
     }
 
+    //start: new method by Aleksandar 11.25
+    @Override
+    public Node[][] getBoardNodes(){
+        return nodes;
+    }
+
     /**
      * Returns a list of the 4 nodes initialized in the constructor.
      * @return the list of initial nodes
